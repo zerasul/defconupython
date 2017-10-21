@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Defcon Platino</title>
+        <style>
+            body{
+                margin: 1em;
+                margin-top: 0.5em;
+            }
+            h1{
+                position: relative;
+                text-align: center;
+                font-size: 5em;
+                margin-bottom: 0.25em;
+            }
+            .defconcontainer{
+                padding: 2em;
+                padding-top: 1.5em;
+                padding-bottom: 0.5em;
+            }
+            .defconcontainer p{
+                font-size: 1.5em;
+                margin-top: 0.25em;
+                margin-bottom: 0.25em;
+            }
+            .defconcontainer h2{
+                font-size: 4.5em;
+                text-align: center;
+                padding-top: 0.10em;
+                margin-top: 0.1em;
+                margin-bottom: 0.5em;
+            }
+            .defconcontainer form{
+                padding: -0.5em;
+            }
+            .defconcontainer form>label{
+                font-size: 1.6em;
+                display: block;
+                padding-bottom: 1em;
+                text-align: center;
+            }
+            select{
+                text-transform: none;
+                text-align: center;
+                padding-top: 1em;
+                height: calc(4.875rem + 2px);
+                display: block;
+                width: 10%;
+                padding: .375rem .75rem;
+                font-size: 1rem;
+                padding: .5rem 1rem;
+                font-size: 3.25rem;
+                line-height: 2.5;
+                border-radius: .3rem;
+                min-width: 2em;
+                left: 10em;
+                margin: 0 auto;
+            }
+            select#selecdefcon option{
+                font-size: 14em;
+            }
+            .defconcontainer input[type=submit]{
+                font-size: 3em;
+                width: 5em;
+                color: #fff;
+                background-color: #007bff;
+                border-color: #007bff;
+                border-radius: .25rem;
+                margin: 0 auto;
+                margin-top: 0.5em;
+            }
+            .button{
+                text-align:center;
+                margin:auto;
+            }
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>DefCon Platino</h1>
+        <div class="defconcontainer">
+        <p><b>Estado de los servicios de Platino</b></p>
+        <p>Estamos en Defcon:</p>
+        <h2>#{defcon}</h2>
+        <p>Seleccione el estado de DefCon Actual:
+        </p>
+        <form method="GET">
+            <label for="selecdefcon">Defcon</label>
+            <select id="selecdefcon" name="defcon">
+                <option value="5">5</option>
+                <option value="4">4</option>
+                <option value="3">3</option>
+                <option value="2">2</option>
+                <option value="1">1</option>
+            </select>
+            <div class="button">
+            <input type="submit" value="Enviar"/>
+            </div>
+        </form>
+        </div>
+        <p>&copy; Dedicado a la Gente de la OTP. Desarrollado por IndaloMan</p>
+    </body>
+</html>
