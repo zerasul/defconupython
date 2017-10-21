@@ -1,7 +1,6 @@
 import network
 import machine
 import usocket
-import os
 
 class WebController:
     fcontroller=None
