@@ -17,3 +17,15 @@ Que se encontará en la dirección http://192.168.4.1
 
 Para cambiar de estado se selecciona el estado del formulario y se pulsa en enviar.
 
+## Lista de Pines
+
+| pin | descripcion |
+| --- | ----------- |
+| D0 | Defcon 1 |
+| D5 | Defcon 2 |
+| D6 | Defcon 3 |
+| D7 | Defcon 4 |
+| D8 | Defcon 5 |
+| V5 | Alimentación poner a 5 Voltios |
+| GND | Tierra |
+ 
