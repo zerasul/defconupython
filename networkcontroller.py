@@ -16,12 +16,12 @@ class WebController:
         server.listen(1)
         while True:
             try:
-               (socket, sockaddr) = server.accept()
-               self.__handle__(socket)
+                (socket, sockaddr) = server.accept()
+                self.__handle__(socket)
             except Exception as e:
-              print(e)
-              socket.write("HTTP/1.1 500 Internal Server Error\r\n\r\n")
-              socket.write("<h1>Internal Server Error</h1>")
+                print(e)
+                socket.write("HTTP/1.1 500 Internal Server Error\r\n\r\n")
+                socket.write("<h1>Internal Server Error</h1>")
             socket.close()
 
     def __handle__(self,socket):
@@ -65,5 +65,5 @@ class WebController:
 
     def err(self, socket, code, message):
         socket.write("HTTP/1.1 OK\r\n\r\n")
-        mesage = "<html><head><title>Error {}</title></head><body><h1>Error {}</h1><p>{}".format(code,code,message)
+        mesage = "<html><head><title>Error {}</title></head><body><h1>Error {}</h1><p>{}".format(code, code, message)
         socket.write(mesage)
