@@ -1,14 +1,30 @@
 import network
 import machine
 import usocket
+import config
+
+
+class Wifi_Controller:
+
+    @staticmethod
+    def configure_Wifi(essid, password, mode='AP'):
+        if mode == config.WIFIMODE_AP:
+            wlan = network.WLAN(mode=network.AP_IF)
+            wlan.active(True)
+            wlan.config(essid=essid)
+            wlan.config(authmode=network.AUTH_WPA2_PSK)
+            wlan.config(password=password)
+        else:
+            wlan = network.WLAN(mode=network.STA_IF)
+
 
 class WebController:
-    fcontroller=None
-    dcontroller=None
-    TEMPLATE="template.html"
-    def __init__(self,fcontroller,dcontroller):
-        self.fcontroller=fcontroller
-        self.dcontroller=dcontroller
+    fcontroller = None
+    dcontroller = None
+    TEMPLATE = "template.html"
+    def __init__(self, fcontroller, dcontroller):
+        self.fcontroller = fcontroller
+        self.dcontroller = dcontroller
 
     def initServer(self, port):
         server = usocket.socket()
@@ -57,6 +73,7 @@ class WebController:
     def ok(self,socket, query):
         f = open(self.TEMPLATE,'r')
         html=f.readlines()
+        f.close()
         socket.write("HTTP/1.1 OK\r\n")
         socket.write("Content-Type: text/html\r\n\r\n")
         for strhtml in html:
