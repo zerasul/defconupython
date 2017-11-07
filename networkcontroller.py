@@ -1,19 +1,51 @@
 import network
 import machine
 import usocket
+import config
+import time
+
+
+class Wifi_Controller:
+
+    @staticmethod
+    def configure_Wifi(essid, password, mode='AP'):
+        if mode == config.WIFIMODE_AP:
+            wlan = network.WLAN(network.AP_IF)
+            wlan.active(True)
+            wlan.config(essid=essid)
+            wlan.config(authmode=network.AUTH_WPA2_PSK)
+            wlan.config(password=password)
+            wlan.active(True)
+        else:
+            wlan = network.WLAN(network.STA_IF)
+            wlanap = network.WLAN(network.AP_IF)
+            wlanap.active(False)
+            wlan.connect(essid, password)
+            for i in range(10):
+                if wlan.isconnected():
+                    break
+                time.sleep(1.5)
+                print('Conectando.... {}'.format(str(i)))
+            if not wlan.isconnected():
+                raise Exception('Error, no puedo conectar a la wifi')
+        
+        print('Conectado a {} '.format(essid))
+        print(wlan.ifconfig())
+
 
 class WebController:
-    fcontroller=None
-    dcontroller=None
-    TEMPLATE="template.html"
-    def __init__(self,fcontroller,dcontroller):
-        self.fcontroller=fcontroller
-        self.dcontroller=dcontroller
+    fcontroller = None
+    dcontroller = None
+    TEMPLATE = "template.html"
+    def __init__(self, fcontroller, dcontroller):
+        self.fcontroller = fcontroller
+        self.dcontroller = dcontroller
 
     def initServer(self, port):
         server = usocket.socket()
         server.bind(('0.0.0.0', 80))
         server.listen(1)
+        print('Platino Server Initiated')
         while True:
             try:
                 (socket, sockaddr) = server.accept()
@@ -57,10 +89,12 @@ class WebController:
     def ok(self,socket, query):
         f = open(self.TEMPLATE,'r')
         html=f.readlines()
+        f.close()
         socket.write("HTTP/1.1 OK\r\n")
         socket.write("Content-Type: text/html\r\n\r\n")
         for strhtml in html:
-            strhtml=strhtml.replace("#{defcon}",str(self.dcontroller.get_current_state()))
+            strhtml = strhtml.replace("#{defcon}",str(self.dcontroller.get_current_state()))
+            strhtml = strhtml.replace("#{version}", config.DEFCON_VERSION)
             socket.write(strhtml)
 
     def err(self, socket, code, message):
