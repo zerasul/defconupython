@@ -17,6 +17,19 @@ Que se encontará en la dirección http://192.168.4.1
 
 Para cambiar de estado se selecciona el estado del formulario y se pulsa en enviar.
 
+## Configuración
+
+A partir de la versión _0.2_, existe un fichero llamado ```config.py``` donde existe una serie de variables de configuración que serán utilizados por el dispositivo.
+
+Seguidamente se muestran las variables y para que se utiliza.
+
+| Variable | descripcion |
+| --- | ----------- |
+| WIFI_MODE | Establece el modo de la wifi; puede ser "WIFIMODE_AP"(Modo punto de acceso) o "WIFIMODE_AS" (modo estación de acceso). |
+| WIFI_ESSID | ESSID de la wifi de la que vamos a crear (modo AP) o conectar (modo AS). |
+| WIFI_PASS | Clave de la wifi de la que vamos a crear (modo AP) o conectar (modo AS). |
+| DEFCON_VERSION | Versión actual del software del dispositivo. |
+
 ## Lista de Pines
 
 | pin | descripcion |
