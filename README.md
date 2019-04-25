@@ -4,7 +4,7 @@ Defcon Wifi Signal With MicroPython
 
 
 Señal de defcon con wifi integrado utilizando el ESP8266. Este proyecto utiliza la placa [Wemos D1 Mini](https://wiki.wemos.cc/products:d1:d1_mini).
-Este código corresponde a la mejora de una señal defcon para la Oficina Ténica de Platino. Seguidamente se muestran la imagenes de pines de la Wemos D1 mini.
+Este código corresponde a la mejora de una señal defcon para la Oficina Técnica de Platino. Seguidamente se muestran la imagenes de pines de la Wemos D1 mini.
 
 ![Pinout](http://escapequotes.net/wp-content/uploads/2016/02/esp8266-wemos-d1-mini-pinout.png)
 
